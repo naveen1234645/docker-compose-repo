@@ -9,10 +9,19 @@ services:
     restart: always
   hello-world-service:
     build:
-      context: my-hello-world-service
+      context: my-hello-world-servic
       dockerfile: Dockerfile    
     ports:
       - "8100:8100"
+    restart: always
+    depends_on:
+      - naming-server
+  trainee-service:
+    build:
+      context: trainee-service
+      dockerfile: Dockerfile    
+    ports:
+      - "8200:8200"
     restart: always
     depends_on:
       - naming-server
